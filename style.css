@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+h2 {
+  font-size: 2rem;
+}
+@media (min-resolution: 100dpi) and (max-resolution: 115dpi) {
+  h2 {
+    font-size: 1.85rem;
+  }
+}
+@media (min-resolution: 115dpi) and (max-resolution: 125dpi) {
+  h2 {
+    font-size: 1.67rem;
+  }
+}
+@media (min-resolution: 125dpi) and (max-resolution: 135dpi) {
+  h2 {
+    font-size: 1.51rem;
+  }
+}
+@media (min-resolution: 135dpi) and (max-resolution: 145dpi) {
+  h2 {
+    font-size: 1.33rem;
+  }
+}
+
+.fixed-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  padding: 20px;
+  background: #fff;
+  max-width: 100%;
+}
+.fixed-box_wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.479);
+}
+@media (min-resolution: 100dpi) and (max-resolution: 115dpi) {
+  .fixed-box {
+    width: 370px;
+  }
+}
+@media (min-resolution: 115dpi) and (max-resolution: 125dpi) {
+  .fixed-box {
+    width: 334px;
+  }
+}
+@media (min-resolution: 125dpi) and (max-resolution: 135dpi) {
+  .fixed-box {
+    width: 302px;
+  }
+}
+@media (min-resolution: 135dpi) and (max-resolution: 145dpi) {
+  .fixed-box {
+    width: 266px;
+  }
+}
+@media (min-resolution: 100dpi) and (max-resolution: 115dpi) {
+  .fixed-box {
+    height: 370px;
+  }
+}
+@media (min-resolution: 115dpi) and (max-resolution: 125dpi) {
+  .fixed-box {
+    height: 334px;
+  }
+}
+@media (min-resolution: 125dpi) and (max-resolution: 135dpi) {
+  .fixed-box {
+    height: 302px;
+  }
+}
+@media (min-resolution: 135dpi) and (max-resolution: 145dpi) {
+  .fixed-box {
+    height: 266px;
+  }
+}
+@media (min-resolution: 100dpi) and (max-resolution: 115dpi) {
+  .fixed-box {
+    padding: 18.5px;
+  }
+}
+@media (min-resolution: 115dpi) and (max-resolution: 125dpi) {
+  .fixed-box {
+    padding: 16.7px;
+  }
+}
+@media (min-resolution: 125dpi) and (max-resolution: 135dpi) {
+  .fixed-box {
+    padding: 15.1px;
+  }
+}
+@media (min-resolution: 135dpi) and (max-resolution: 145dpi) {
+  .fixed-box {
+    padding: 13.3px;
+  }
+}
+@media (min-resolution: 100dpi) and (max-resolution: 115dpi) {
+  .fixed-box {
+    background-color: purple;
+  }
+}
+@media (min-resolution: 115dpi) and (max-resolution: 125dpi) {
+  .fixed-box {
+    background-color: red;
+  }
+}
+@media (min-resolution: 125dpi) and (max-resolution: 135dpi) {
+  .fixed-box {
+    background-color: green;
+  }
+}
+@media (min-resolution: 135dpi) and (max-resolution: 145dpi) {
+  .fixed-box {
+    background-color: yellow;
+  }
+}
+
+.fixed-box2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100mm;
+  height: 100mm;
+  padding: 40px;
+  background: #fff;
+  max-width: 100%;
+}
+.fixed-box2_wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.479);
+}
+
+/*# sourceMappingURL=style.css.map */

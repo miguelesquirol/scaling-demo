@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+}
+
+@mixin maintain($property, $size) {
+  #{$property}: $size;
+  @media (min-resolution: 100dpi) and (max-resolution: 115dpi) {
+    #{$property}: $size * 92.5% / 100%;
+  }
+  @media (min-resolution: 115dpi) and (max-resolution: 125dpi) {
+    #{$property}: $size * 83.5% / 100%;
+  }
+  @media (min-resolution: 125dpi) and (max-resolution: 135dpi) {
+    #{$property}: $size * 75.5% / 100%;
+  }
+  @media (min-resolution: 135dpi) and (max-resolution: 145dpi) {
+    #{$property}: $size * 66.5% / 100%;
+  }
+}
+
+h2 {
+  @include maintain(font-size, 2rem);
+}
+.fixed-box {
+  &_wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.479);
+  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @include maintain(width, 400px);
+  @include maintain(height, 400px);
+  @include maintain(padding, 20px);
+
+  background: #fff;
+  max-width: 100%;
+
+  @media (min-resolution: 100dpi) and (max-resolution: 115dpi) {
+    background-color: purple;
+  }
+  @media (min-resolution: 115dpi) and (max-resolution: 125dpi) {
+    background-color: red;
+  }
+  @media (min-resolution: 125dpi) and (max-resolution: 135dpi) {
+    background-color: green;
+  }
+  @media (min-resolution: 135dpi) and (max-resolution: 145dpi) {
+    background-color: yellow;
+  }
+}
+
+.fixed-box2 {
+  &_wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.479);
+  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100mm;
+  height: 100mm;
+  padding: 40px;
+  background: #fff;
+  max-width: 100%;
+}
