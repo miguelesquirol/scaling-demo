@@ -5,54 +5,7 @@ html {
   font-size: 10px;
 }
 
-@function map-get-next($map, $key, $fallback: false, $return: value) {
-  // Check if map is valid
-  @if type-of($map) == map {
-    // Check if key exists in map
-    @if map-has-key($map, $key) {
-      // Init index counter variable
-      $i: 0;
-
-      // Init key index
-      $key-index: false;
-
-      // Traverse map for key
-      @each $map-key, $map-value in $map {
-        // Update index
-        $i: $i + 1;
-
-        // If map key found, set key index
-        @if $map-key == $key {
-          $key-index: $i;
-        }
-
-        // If next index return next value or key based on $return
-        @if $i == $key-index + 1 {
-          @if $return == key {
-            @return $map-key;
-          } @else {
-            @return $map-value;
-          }
-        }
-
-        // If last entry return false
-        @if $i == length($map) {
-          @return $fallback;
-        }
-      }
-
-      @warn 'No next map item for key #{$key}';
-      @return $fallback;
-    }
-
-    @warn 'No valid key #{$key} in map';
-    @return $fallback;
-  }
-
-  @warn 'No valid map';
-  @return $fallback;
-}
-
+@import "map-next";
 
 $scaling: (
   90: 1,
@@ -62,40 +15,45 @@ $scaling: (
   130: 0.75,
   140: 0.667,
   190: 1,
-  210: 0.9165,
+  210: 0.9,
   230: 0.834,
-  250: 0.75,
+  250: 0.765,
   280: 0.667,
-  290: 0.667,
 );
-
-.dpi {
-  display: none;
-}
-
-@for $i from 9 through 30 {
-  @media (min-resolution: #{$i * 10 }dpi) and (max-resolution: #{$i * 10 + 9}dpi) {
-    .dpi#{$i * 10} {
-      display: block;
-    }
-  }
-}
 
 @mixin keep($property, $size) {
   #{$property}: $size;
   @each $dpi, $scale in $scaling {
+    @if map-get-next($scaling,$dpi,$return:key) {
     @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{map-get-next($scaling,$dpi,$return:key) - 1}dpi) {
       #{$property}: $size * $scale;
+    }
+  }
+    @else  {
+      @media (min-resolution: #{$dpi}dpi) {
+        #{$property}: $size * $scale;
+      }
     }
   }
 }
 
 @mixin scale($id) {
   @each $dpi, $scale in $scaling {
-    @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{map-get-next($scaling,$dpi,$return:key) - 1}dpi) {
-      transform-origin: top left;
+    @each $dpi, $scale in $scaling {
+      @if map-get-next($scaling,$dpi,$return:key) {
+      @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{map-get-next($scaling,$dpi,$return:key) - 1}dpi) {
+        transform-origin: top left;
+        transform: scale($scale);
+        margin-bottom: calc(var(--#{$id}-height) * ($scale - 1));
+      }
+    }
+      @else  {
+        @media (min-resolution: #{$dpi}dpi) {
+          transform-origin: top left;
       transform: scale($scale);
       margin-bottom: calc(var(--#{$id}-height) * ($scale - 1));
+        }
+      }
     }
   }
 }
@@ -114,11 +72,21 @@ $scaling: (
   }
 
   @each $dpi, $scale in $scaling {
-    @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{map-get-next($scaling,$dpi,$return:key) - 1}dpi) {
-      .z#{$dpi} {
-        display: block;
+
+    @if map-get-next($scaling,$dpi,$return:key) {
+      @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{map-get-next($scaling,$dpi,$return:key) - 1}dpi) {
+        .z#{$dpi} {
+          display: block;
+        }
       }
     }
+      @else  {
+        @media (min-resolution: #{$dpi}dpi) {
+          .z#{$dpi} {
+            display: block;
+          }
+        }
+      }
   }
 
   @media (min-resolution: 280dpi) {
@@ -128,46 +96,6 @@ $scaling: (
   }
 }
 
-// @mixin keep($property, $size) {
-//   #{$property}: $size;
-//   @each $dpi, $scale in $scaling {
-//     @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{$dpi + 10}dpi) {
-//       #{$property}: $size * $scale;
-//     }
-//   }
-// }
-
-// @mixin scale($id) {
-//   @each $dpi, $scale in $scaling {
-//     @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{$dpi + 10}dpi) {
-//       transform-origin: top left;
-//       transform: scale($scale);
-//       margin-bottom: calc(var(--#{$id}-height) * ($scale - 1));
-//     }
-//   }
-// }
-
-// @mixin showscale() {
-//   @media (max-resolution: 300dpi) {
-//     .zmin {
-//       display: block;
-//     }
-//   }
-
-//   @each $dpi, $scale in $scaling {
-//     @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{$dpi + 10}dpi) {
-//       .z#{$dpi} {
-//         display: block;
-//       }
-//     }
-//   }
-
-//   @media (min-resolution: 450dpi) {
-//     .zmax {
-//       display: block;
-//     }
-//   }
-// }
 
 body {
   @include keep(margin, 20px);
