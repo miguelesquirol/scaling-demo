@@ -53,19 +53,6 @@ html {
   @return $fallback;
 }
 
-// 96 100
-// 106 - 105 110
-// 115 120
-// 120 - 125
-// 128 133
-// 144 150
-
-// 90
-// 100
-// 110
-// 120
-// 130
-// 140
 
 $scaling: (
   90: 1,
@@ -79,6 +66,7 @@ $scaling: (
   230: 0.834,
   250: 0.75,
   280: 0.667,
+  290: 0.667,
 );
 
 .dpi {
@@ -115,6 +103,12 @@ $scaling: (
 @mixin showscale() {
   @media (max-resolution: 89dpi) {
     .zmin {
+      display: block;
+    }
+  }
+
+  @media (min-resolution: 281dpi) {
+    .zmax {
       display: block;
     }
   }

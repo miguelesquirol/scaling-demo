@@ -173,7 +173,12 @@ body {
     margin: 15px;
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
+  body {
+    margin: 13.34px;
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
   body {
     margin: 13.34px;
   }
@@ -237,7 +242,12 @@ br {
     height: 15px;
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
+  br {
+    height: 13.34px;
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
   br {
     height: 13.34px;
   }
@@ -292,7 +302,12 @@ br {
     line-height: 15px;
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
+  br {
+    line-height: 13.34px;
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
   br {
     line-height: 13.34px;
   }
@@ -357,7 +372,12 @@ br {
     top: 15px;
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
+  .scale {
+    top: 13.34px;
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
   .scale {
     top: 13.34px;
   }
@@ -412,13 +432,23 @@ br {
     right: 15px;
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
+  .scale {
+    right: 13.34px;
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
   .scale {
     right: 13.34px;
   }
 }
 @media (max-resolution: 89dpi) {
   .scale .zmin {
+    display: block;
+  }
+}
+@media (min-resolution: 281dpi) {
+  .scale .zmax {
     display: block;
   }
 }
@@ -472,8 +502,13 @@ br {
     display: block;
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
   .scale .z280 {
+    display: block;
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
+  .scale .z290 {
     display: block;
   }
 }
@@ -552,7 +587,14 @@ br {
     margin-bottom: calc(var(--scale-height) * -0.25);
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
+  .scale {
+    transform-origin: top left;
+    transform: scale(0.667);
+    margin-bottom: calc(var(--scale-height) * -0.333);
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
   .scale {
     transform-origin: top left;
     transform: scale(0.667);
@@ -626,7 +668,12 @@ br {
     font-size: 1.5rem;
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
+  .fixed-box h2 {
+    font-size: 1.334rem;
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
   .fixed-box h2 {
     font-size: 1.334rem;
   }
@@ -681,7 +728,12 @@ br {
     width: 225px;
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
+  .fixed-box {
+    width: 200.1px;
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
   .fixed-box {
     width: 200.1px;
   }
@@ -736,7 +788,12 @@ br {
     height: 150px;
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
+  .fixed-box {
+    height: 133.4px;
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
   .fixed-box {
     height: 133.4px;
   }
@@ -791,7 +848,12 @@ br {
     padding: 30px;
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
+  .fixed-box {
+    padding: 26.68px;
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
   .fixed-box {
     padding: 26.68px;
   }
@@ -872,7 +934,12 @@ br {
     height: 15px;
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
+  .separator {
+    height: 13.34px;
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
   .separator {
     height: 13.34px;
   }
@@ -951,7 +1018,14 @@ br {
     margin-bottom: calc(var(--box1-height) * -0.25);
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
+  [data-scaleid=box1] {
+    transform-origin: top left;
+    transform: scale(0.667);
+    margin-bottom: calc(var(--box1-height) * -0.333);
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
   [data-scaleid=box1] {
     transform-origin: top left;
     transform: scale(0.667);
@@ -1032,7 +1106,14 @@ br {
     margin-bottom: calc(var(--box2-height) * -0.25);
   }
 }
-@media (min-resolution: 280dpi) and (max-resolution: false-1dpi) {
+@media (min-resolution: 280dpi) and (max-resolution: 289dpi) {
+  [data-scaleid=box2] {
+    transform-origin: top left;
+    transform: scale(0.667);
+    margin-bottom: calc(var(--box2-height) * -0.333);
+  }
+}
+@media (min-resolution: 290dpi) and (max-resolution: false-1dpi) {
   [data-scaleid=box2] {
     transform-origin: top left;
     transform: scale(0.667);
