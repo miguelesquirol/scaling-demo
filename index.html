@@ -10,29 +10,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
   </head>
   <body>
-    <div class="fixed-box3 height" data-zoomId="box1">
-      <h2>First Test wit script</h2>
+    <div class="fixed-box3" data-scaleId="box1">
+      <h2>First Test wit mixin/script combo</h2>
     </div>
-    <br />
-    <div class="fixed-box3 height" data-zoomId="box2">
-      <h2>Second Test wit script</h2>
+    <div class="separator"></div>
+    <div class="fixed-box3" data-scaleId="box2">
+      <h2>Second Test wit mixin/script combo</h2>
     </div>
-    <br />
+    <div class="separator"></div>
     <div class="fixed-box">
       <h2>Test with mixin</h2>
     </div>
-    <br />
+    <div class="separator"></div>
     <div class="fixed-box2">
       <h2>Test without anything</h2>
     </div>
 
-    <div class="zoom height" id="zoom" data-zoomId="zoom">
-      <p class="zmin">Zoom 100% or less</p>
-      <p class="z100">Zoom of 110%</p>
-      <p class="z115">Zoom of 120%</p>
-      <p class="z125">Zoom of 133%</p>
-      <p class="z135">Zoom of 150%</p>
-      <p class="zmax">Zoom more than 150%</p>
+    <div class="scale" id="scale" data-scaleId="scale">
+      <p class="zmin">scale 100% or less</p>
+      <p class="z100">scale of 110%</p>
+      <p class="z115">scale of 120%</p>
+      <p class="z125">scale of 133%</p>
+      <p class="z135">scale of 150%</p>
+      <p class="zmax">scale more than 150%</p>
     </div>
   </body>
   <script src="./assets/js/script.js" type="module"></script>

@@ -3,11 +3,11 @@ console.log("test");
 var r = document.querySelector(":root");
 
 function getHeight() {
-  let divElems = document.querySelectorAll(".height");
+  let divElems = document.querySelectorAll("[data-scaleid]");
 
   divElems.forEach((divElem) => {
     let elemHgt = divElem.clientHeight;
-    myFunction_set(divElem.dataset.zoomid, elemHgt);
+    myFunction_set(divElem.dataset.scaleid, elemHgt);
   });
 }
 

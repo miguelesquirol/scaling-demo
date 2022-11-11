@@ -15,31 +15,31 @@ $scaling: (
 @mixin keep($property, $size) {
   #{$property}: $size;
 
-  @each $dpi, $zoom in $scaling {
+  @each $dpi, $scale in $scaling {
     @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{$dpi + 10}dpi) {
-      #{$property}: $size * $zoom;
+      #{$property}: $size * $scale;
     }
   }
 }
 
-@mixin zoom($id) {
-  @each $dpi, $zoom in $scaling {
+@mixin scale($id) {
+  @each $dpi, $scale in $scaling {
     @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{$dpi + 10}dpi) {
       transform-origin: top left;
-      transform: scale($zoom);
-      margin-bottom: calc(var(--#{$id}-height) * ($zoom - 1));
+      transform: scale($scale);
+      margin-bottom: calc(var(--#{$id}-height) * ($scale - 1));
     }
   }
 }
 
-@mixin showzoom() {
+@mixin showscale() {
   @media (max-resolution: 100dpi) {
     .zmin {
       display: block;
     }
   }
 
-  @each $dpi, $zoom in $scaling {
+  @each $dpi, $scale in $scaling {
     @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{$dpi + 10}dpi) {
       .z#{$dpi} {
         display: block;
@@ -66,7 +66,7 @@ br {
   @include keep(line-height, 20px);
 }
 
-.zoom {
+.scale {
   position: absolute;
   @include keep(top, 20px);
   @include keep(right, 20px);
@@ -74,8 +74,8 @@ br {
   border: 1px solid black;
   padding: 20px;
   transform-origin: top right !important;
-  @include showzoom();
-  @include zoom("zoom");
+  @include showscale();
+  @include scale("scale");
 
   p {
     font-size: 18px;
@@ -120,12 +120,17 @@ br {
   border: 1px solid #000;
 }
 
-[data-zoomid="box1"] {
+.separator {
+  display: block;
+  @include keep(height, 20px);
+  width: 100%;
+}
+[data-scaleid="box1"] {
   height: 200px;
-  @include zoom("box1");
+  @include scale("box1");
 }
 
-[data-zoomid="box2"] {
+[data-scaleid="box2"] {
   height: 150px;
-  @include zoom("box2");
+  @include scale("box2");
 }
