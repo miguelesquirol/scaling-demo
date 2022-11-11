@@ -10,11 +10,34 @@ $scaling: (
   115: 0.834,
   125: 0.75,
   135: 0.667,
+
+  190: 1,
+  210: 0.9165,
+  220: 0.9165,
+
+  230: 0.834,
+  240: 0.834,
+
+  250: 0.75,
+  260: 0.75,
+  270: 0.75,
+
+  280: 0.667,
 );
+
+.dpi {
+  display:none;
+}
+
+@for $i from 10 through 30 {
+  @media (min-resolution: #{$i * 10 }dpi) and (max-resolution: #{$i * 10 + 9}dpi) {
+    .dpi#{$i * 10}{ 
+      display:block
+  }}
+}
 
 @mixin keep($property, $size) {
   #{$property}: $size;
-
   @each $dpi, $scale in $scaling {
     @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{$dpi + 10}dpi) {
       #{$property}: $size * $scale;
@@ -32,8 +55,9 @@ $scaling: (
   }
 }
 
+
 @mixin showscale() {
-  @media (max-resolution: 100dpi) {
+  @media (max-resolution: 190dpi) {
     .zmin {
       display: block;
     }
@@ -47,12 +71,55 @@ $scaling: (
     }
   }
 
-  @media (min-resolution: 150dpi) {
+  @media (min-resolution: 280dpi) {
     .zmax {
       display: block;
     }
   }
 }
+
+
+
+// @mixin keep($property, $size) {
+//   #{$property}: $size;
+//   @each $dpi, $scale in $scaling {
+//     @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{$dpi + 10}dpi) {
+//       #{$property}: $size * $scale;
+//     }
+//   }
+// }
+
+// @mixin scale($id) {
+//   @each $dpi, $scale in $scaling {
+//     @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{$dpi + 10}dpi) {
+//       transform-origin: top left;
+//       transform: scale($scale);
+//       margin-bottom: calc(var(--#{$id}-height) * ($scale - 1));
+//     }
+//   }
+// }
+
+// @mixin showscale() {
+//   @media (max-resolution: 300dpi) {
+//     .zmin {
+//       display: block;
+//     }
+//   }
+
+//   @each $dpi, $scale in $scaling {
+//     @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{$dpi + 10}dpi) {
+//       .z#{$dpi} {
+//         display: block;
+//       }
+//     }
+//   }
+
+//   @media (min-resolution: 450dpi) {
+//     .zmax {
+//       display: block;
+//     }
+//   }
+// }
 
 body {
   @include keep(margin, 20px);
