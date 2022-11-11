@@ -10,16 +10,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
   </head>
   <body>
-    <h1>Scaling Demo</h1>
+    <div class="fixed-box3 height" data-zoomId="box1">
+      <h2>First Test wit script</h2>
+    </div>
+    <br />
+    <div class="fixed-box3 height" data-zoomId="box2">
+      <h2>Second Test wit script</h2>
+    </div>
+    <br />
+    <div class="fixed-box">
+      <h2>Test with mixin</h2>
+    </div>
+    <br />
+    <div class="fixed-box2">
+      <h2>Test without anything</h2>
+    </div>
 
-    <div class="fixed-box_wrapper">
-      <div class="fixed-box">
-        <h2>Test Font</h2>
-      </div>
-      <div class="fixed-box2">
-        <h2>Test Font</h2>
-      </div>
+    <div class="zoom height" id="zoom" data-zoomId="zoom">
+      <p class="zmin">Zoom 100% or less</p>
+      <p class="z100">Zoom of 110%</p>
+      <p class="z115">Zoom of 120%</p>
+      <p class="z125">Zoom of 133%</p>
+      <p class="z135">Zoom of 150%</p>
+      <p class="zmax">Zoom more than 150%</p>
     </div>
   </body>
-  <script src="./script.js" type="module"></script>
+  <script src="./assets/js/script.js" type="module"></script>
 </html>

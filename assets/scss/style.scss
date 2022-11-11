@@ -5,75 +5,127 @@ html {
   font-size: 10px;
 }
 
-@mixin maintain($property, $size) {
+$scaling: (
+  100: 0.9165,
+  115: 0.834,
+  125: 0.75,
+  135: 0.667,
+);
+
+@mixin keep($property, $size) {
   #{$property}: $size;
-  @media (min-resolution: 100dpi) and (max-resolution: 115dpi) {
-    #{$property}: $size * 92.5% / 100%;
-  }
-  @media (min-resolution: 115dpi) and (max-resolution: 125dpi) {
-    #{$property}: $size * 83.5% / 100%;
-  }
-  @media (min-resolution: 125dpi) and (max-resolution: 135dpi) {
-    #{$property}: $size * 75.5% / 100%;
-  }
-  @media (min-resolution: 135dpi) and (max-resolution: 145dpi) {
-    #{$property}: $size * 66.5% / 100%;
+
+  @each $dpi, $zoom in $scaling {
+    @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{$dpi + 10}dpi) {
+      #{$property}: $size * $zoom;
+    }
   }
 }
 
+@mixin zoom($id) {
+  @each $dpi, $zoom in $scaling {
+    @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{$dpi + 10}dpi) {
+      transform-origin: top left;
+      transform: scale($zoom);
+      margin-bottom: calc(var(--#{$id}-height) * ($zoom - 1));
+    }
+  }
+}
+
+@mixin showzoom() {
+  @media (max-resolution: 100dpi) {
+    .zmin {
+      display: block;
+    }
+  }
+
+  @each $dpi, $zoom in $scaling {
+    @media (min-resolution: #{$dpi}dpi) and (max-resolution: #{$dpi + 10}dpi) {
+      .z#{$dpi} {
+        display: block;
+      }
+    }
+  }
+
+  @media (min-resolution: 150dpi) {
+    .zmax {
+      display: block;
+    }
+  }
+}
+
+body {
+  @include keep(margin, 20px);
+}
 h2 {
-  @include maintain(font-size, 2rem);
+  font-size: 2rem;
 }
-.fixed-box {
-  &_wrapper {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.479);
-  }
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 
-  @include maintain(width, 400px);
-  @include maintain(height, 400px);
-  @include maintain(padding, 20px);
+br {
+  @include keep(height, 20px);
+  @include keep(line-height, 20px);
+}
+
+.zoom {
+  position: absolute;
+  @include keep(top, 20px);
+  @include keep(right, 20px);
+  width: 300px;
+  border: 1px solid black;
+  padding: 20px;
+  transform-origin: top right !important;
+  @include showzoom();
+  @include zoom("zoom");
+
+  p {
+    font-size: 18px;
+    display: none;
+  }
+}
+
+.fixed-box {
+  border: 1px solid #000;
+
+  h2 {
+    @include keep(font-size, 2rem);
+  }
+
+  position: relative;
+
+  @include keep(width, 300px);
+  @include keep(height, 200px);
+  @include keep(padding, 40px);
 
   background: #fff;
   max-width: 100%;
-
-  @media (min-resolution: 100dpi) and (max-resolution: 115dpi) {
-    background-color: purple;
-  }
-  @media (min-resolution: 115dpi) and (max-resolution: 125dpi) {
-    background-color: red;
-  }
-  @media (min-resolution: 125dpi) and (max-resolution: 135dpi) {
-    background-color: green;
-  }
-  @media (min-resolution: 135dpi) and (max-resolution: 145dpi) {
-    background-color: yellow;
-  }
 }
 
 .fixed-box2 {
-  &_wrapper {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.479);
-  }
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100mm;
-  height: 100mm;
+  position: relative;
+  width: 300px;
+  height: 200px;
   padding: 40px;
   background: #fff;
   max-width: 100%;
+  border: 1px solid #000;
+}
+
+.fixed-box3 {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  padding: 40px;
+  background: #fff;
+  max-width: 100%;
+  border: 1px solid #000;
+}
+
+[data-zoomid="box1"] {
+  height: 200px;
+  @include zoom("box1");
+}
+
+[data-zoomid="box2"] {
+  height: 150px;
+  @include zoom("box2");
 }
